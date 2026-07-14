@@ -1,0 +1,82 @@
+:root {
+    --bg-black: #000000;
+    --bg-card: #09090B;
+    --border-thin: #1E1F22;
+    --text-primary: #E7E9EA;
+    --text-muted: #71717A;
+    --gray-light: #A1A1AA;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Premium Navigation */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-thin);
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo-x {
+    color: var(--gray-light);
+}
+
+/* Hero Section */
+.hero {
+    max-width: 800px;
+    margin: 80px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* Premium Action Buttons */
+.btn-download {
+    background: var(--text-primary);
+    color: #000;
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 16px;
+    display: inline-block;
+    transition: background 0.2s;
+}
+
+.btn-download:hover {
+    background: #D7D9DA;
+}
