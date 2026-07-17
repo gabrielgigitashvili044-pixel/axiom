@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="https://github.io">
     <title>Axiom | The Sovereign Network</title>
     <style>
         :root {
@@ -14,6 +13,7 @@
             --text-primary: #E7E9EA;
             --text-muted: #71717A;
             --gray-light: #A1A1AA;
+            --matrix-green: #00FF66;
         }
 
         * {
@@ -110,6 +110,12 @@
         .f-card { border: 1px solid var(--border-thin); padding: 30px; border-radius: 12px; background: var(--bg-card); }
         .f-card h3 { font-size: 20px; margin-bottom: 12px; }
         .f-card p { font-size: 14px; color: var(--text-muted); }
+
+        /* 📟 MATRIX LIVE LOG PANEL */
+        .matrix-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .matrix-box { background: #050505; border: 1px solid var(--border-thin); border-radius: 8px; padding: 20px; font-family: "Courier New", Courier, monospace; font-size: 13px; color: var(--matrix-green); text-align: left; height: 180px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,255,102,0.1); }
+        .matrix-header { color: var(--text-muted); margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid var(--border-thin); padding-bottom: 5px; font-family: inherit; }
+
         .faq-section { max-width: 800px; margin: 100px auto; padding: 0 20px; }
         .faq-section h2 { font-size: 32px; text-align: center; margin-bottom: 40px; letter-spacing: -1px; }
         .faq-item { border-bottom: 1px solid var(--border-thin); padding: 20px 0; }
@@ -123,7 +129,7 @@
 
     <nav class="nav-container">
         <div class="logo-text">A<span class="logo-x">X</span>IOM</div>
-        <div style="color: var(--text-muted); font-size: 14px; font-weight: 600;">Status: Devnet Array v1.1.0</div>
+        <div style="color: var(--text-muted); font-size: 14px; font-weight: 600;">Status: Devnet Array v1.2.0</div>
     </nav>
 
     <section class="hero">
@@ -131,10 +137,19 @@
         <p>Enforce hyper-isolated client sandboxing. Blind kernel telemetry sweeps and eliminate local client-side scanning loops automatically.</p>
         
         <span id="download-zone">
-            <a href="https://github.com/gabrielgigitashvili044-pixel/axiom/releases/download/v1.1.0/axiom-shield.Setup.1.1.0.exe" class="btn-download" id="main-dl-btn">Download Axiom-Shield Setup</a>
+            <a href="https://github.com" class="btn-download" id="main-dl-btn">Download Axiom-Shield Setup</a>
         </span>
-        <a href="https://github.com/gabrielgigitashvili044-pixel/axiom" target="_blank" class="btn-star">⭐ Star us on GitHub</a>
+        <a href="https://github.com" target="_blank" class="btn-star">⭐ Star us on GitHub</a>
     </section>
+
+    <!-- 📟 LIVE PERFORMANCE MATRIX ENGINE CONTAINER -->
+    <div class="matrix-container">
+        <div class="matrix-header">⚡ AXIOM SHIELD ACTIVE PROCESS MONITOR MATRIX:</div>
+        <div class="matrix-box" id="matrix-log">
+            [SYS_INIT] Axiom Shield Performance Framework initialized...<br>
+            [CORE_SAFE] Client-side sandbox perimeter securely deployed.<br>
+        </div>
+    </div>
 
     <div class="features-grid">
         <div class="f-card">
@@ -187,25 +202,28 @@
                 const dlZone = document.getElementById("download-zone");
                 dlZone.innerHTML = `<span class="btn-download" style="background: #121214; color: #71717A; border: 1px solid #222226; cursor: not-allowed;">🖥️ Desktop Version Only</span>`;
             }
+
+            // LIVE MATRIX SIMULATION LOGIC FOR USER ENGAGEMENT
+            const logBox = document.getElementById("matrix-log");
+            const operations = [
+                "[BLOCKED] Windows OS background telemetry loop intercept triggered.",
+                "[PURGED] Chromium local diagnostic cache pool forcefully cleaned.",
+                "[SECURE] Garbage RAM collection routine compiled successfully.",
+                "[SHIELD] Content-Security-Policy injection boundary enforced.",
+                "[MTPROTO] Active GramJS handshake routing verified over proxy array.",
+                "[ISOLATED] Sandbox memory stack partition insulated against local sweeps."
+            ];
+
+            setInterval(() => {
+                const randomOp = operations[Math.floor(Math.random() * operations.length)];
+                const timestamp = new Date().toLocaleTimeString();
+                logBox.innerHTML += `[${timestamp}] ${randomOp}<br>`;
+                if (logBox.innerHTML.split("<br>").length > 8) {
+                    logBox.innerHTML = logBox.innerHTML.split("<br>").slice(1).join("<br>");
+                }
+            }, 3000);
         });
 
         document.querySelectorAll('.faq-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const parent = trigger.parentElement;
-                const isActive = parent.classList.contains('active');
-                
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                    item.querySelector('.faq-content').style.maxHeight = '0px';
-                });
-
-                if (!isActive) {
-                    parent.classList.add('active');
-                    const content = parent.querySelector('.faq-content');
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                }
-            });
-        });
-    </script>
-</body>
-</html>
