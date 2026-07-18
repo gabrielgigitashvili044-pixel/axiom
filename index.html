@@ -160,7 +160,7 @@
 
         .matrix-panel {
             max-width: 800px;
-            margin: 20px auto 40px auto;
+            margin: 20px auto 15px auto;
             background: var(--bg-card);
             border: 1px solid var(--border-thin);
             border-radius: 8px;
@@ -198,6 +198,25 @@
             line-height: 1.5;
         }
 
+        /* v1.2.0 Animated Cyber-Panels */
+        .cyber-resource-grid {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-thin);
+            border-radius: 8px;
+            padding: 15px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: left;
+        }
+
+        .resource-block { display: flex; flex-direction: column; }
+        .resource-meta { font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 5px; display: flex; justify-content: space-between; }
+        .resource-bar-bg { background: #1C1C1E; height: 6px; border-radius: 3px; overflow: hidden; width: 100%; }
+        .resource-bar-fill { background: var(--matrix-green); height: 100%; width: 45%; transition: width 0.5s ease-in-out; }
+
         @keyframes pulse {
             0% { opacity: 0.4; }
             50% { opacity: 1; }
@@ -229,7 +248,7 @@
         <p>Enforce hyper-isolated client sandboxing. Blind kernel telemetry sweeps and eliminate local client-side scanning loops automatically.</p>
         
         <span id="download-zone">
-            <a href="https://github.com/gabrielgigitashvili044-pixel/axiom/releases/download/v1.2.0/axiom-shield.Setup.1.2.0.exe">Download Axiom-Shield Setup</a>
+            <a href="https://github.com" class="btn-download" id="main-dl-btn">Download Axiom-Shield Setup</a>
         </span>
         <a href="https://github.com" target="_blank" class="btn-star">⭐ Star us on GitHub</a>
 
@@ -259,6 +278,18 @@
             <div class="matrix-console" id="matrix-console-logs">
                 [SYSTEM] Initializing memory isolation perimeters...<br>
                 [SANDBOX] Hyper-isolated 'persist' storage structures locked.<br>
+            </div>
+        </div>
+
+        <!-- v1.2.0 Animated Cyber Resource Allocation Panels -->
+        <div class="cyber-resource-grid">
+            <div class="resource-block">
+                <div class="resource-meta"><span>Sandbox Thread Overhead</span><span id="cpu-val">24%</span></div>
+                <div class="resource-bar-bg"><div class="resource-bar-fill" id="cpu-fill" style="width: 24%;"></div></div>
+            </div>
+            <div class="resource-block">
+                <div class="resource-meta"><span>Isolated Cache Remanence</span><span id="ram-val">12MB</span></div>
+                <div class="resource-bar-bg"><div class="resource-bar-fill" id="ram-fill" style="width: 15%;"></div></div>
             </div>
         </div>
     </section>
@@ -324,6 +355,11 @@
             }
 
             const consoleLogs = document.getElementById('matrix-console-logs');
+            const cpuVal = document.getElementById('cpu-val');
+            const cpuFill = document.getElementById('cpu-fill');
+            const ramVal = document.getElementById('ram-val');
+            const ramFill = document.getElementById('ram-fill');
+
             if (consoleLogs) {
                 const processes = [
                     "[MITIGATION] Blocked Chromium telemetry sweep outbound connection.",
@@ -332,7 +368,7 @@
                     "[CORE] Active low-level Garbage RAM collection hook running clean loop.",
                     "[MITIGATION] Intercepted host OS telemetry packet burst. Dropped.",
                     "[SECURITY] Enforced immutable CSP boundary on Active Private AI frame.",
-                    "[BROWSER] Blocked canvas canvas fingerprinting hook inside Sovereign Browser Core."
+                    "[BROWSER] Blocked canvas fingerprinting hook inside Sovereign Browser Core."
                 ];
 
                 setInterval(() => {
@@ -341,6 +377,22 @@
                     consoleLogs.innerHTML += `[${timestamp}] ${randomLine}<br>`;
                     if (consoleLogs.innerHTML.split('<br>').length > 7) {
                         consoleLogs.innerHTML = consoleLogs.innerHTML.split('<br>').slice(1).join('<br>');
+                    }
+
+                    // Animate Resource Metrics
+                    if(randomLine.includes("[CORE]")) {
+                        // Purge Simulation Drop
+                        ramVal.innerText = "0.4MB";
+                        ramFill.style.width = "2%";
+                        cpuVal.innerText = "42%";
+                        cpuFill.style.width = "42%";
+                    } else {
+                        const randomCpu = Math.floor(Math.random() * (35 - 15 + 1)) + 15;
+                        const randomRam = Math.floor(Math.random() * (28 - 8 + 1)) + 8;
+                        cpuVal.innerText = randomCpu + "%";
+                        cpuFill.style.width = randomCpu + "%";
+                        ramVal.innerText = randomRam + "MB";
+                        ramFill.style.width = (randomRam * 3) + "%";
                     }
                 }, 4000);
             }
