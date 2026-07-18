@@ -14,8 +14,8 @@ app.commandLine.appendSwitch('disable-component-update');
 app.commandLine.appendSwitch('process-per-site');
 app.commandLine.appendSwitch('js-flags', '--expose-gc');
 
-const apiId = 24195155; 
-const apiHash = 'b6d393693240e4f32cf09b4db704604d';
+const apiId = process.env.TG_API_ID || 0; // Insert your Telegram API ID here
+const apiHash = process.env.TG_API_HASH || ""; // Insert your Telegram API Hash here
 const stringSession = new StringSession(""); 
 
 function createWindow() {
