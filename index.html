@@ -3,114 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axiom Secure Workspace Array</title>
+    <title>Axiom | The Sovereign Network</title>
     <style>
         :root {
             --bg-black: #000000;
+            --bg-card: #09090B;
             --border-thin: #222226;
             --text-primary: #E7E9EA;
             --text-muted: #71717A;
-            --gray-hover: #161618;
+            --gray-light: #A1A1AA;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        body {
-            background-color: var(--bg-black);
-            color: var(--text-primary);
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            overflow: hidden;
-        }
-        .sidebar {
-            width: 275px;
-            background: var(--bg-black);
-            border-right: 1px solid var(--border-thin);
-            display: flex;
-            flex-direction: column;
-            padding: 24px;
-            justify-content: space-between;
-            height: 100vh;
-            flex-shrink: 0;
-        }
-        .brand-title { font-size: 26px; font-weight: 900; letter-spacing: -1px; color: #FFFFFF; padding-left: 12px; }
-        .brand-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; font-weight: 600; padding-left: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
-        .nav-links { display: flex; flex-direction: column; gap: 8px; margin-top: 30px; flex-grow: 1; }
-        .nav-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
-            padding: 12px 16px;
-            border-radius: 9999px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 19px;
-            font-weight: 700;
-            display: block;
-            width: 100%;
-            transition: background 0.2s;
-            letter-spacing: -0.3px;
-        }
-        .nav-btn:hover { background: var(--gray-hover); }
-        .nav-btn.active { background: var(--gray-hover); color: #FFFFFF; }
-        
-        .view-container {
-            flex-grow: 1;
-            height: 100vh;
-            background: var(--bg-black);
-            display: block;
-            position: relative;
-        }
-        webview {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100% !important;
-            height: 100% !important;
-            visibility: hidden;
-            background: #000;
-        }
-        webview.active { visibility: visible !important; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg-black); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-thin); }
+        .logo-text { font-size: 24px; font-weight: 800; letter-spacing: -1px; }
+
+        .hero { max-width: 900px; margin: 80px auto; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: 48px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1; }
+        .hero p { font-size: 18px; color: var(--text-muted); margin-bottom: 40px; }
+
+        .btn-download { background: var(--text-primary); color: #000; text-decoration: none; padding: 14px 36px; border-radius: 9999px; font-weight: 700; font-size: 16px; display: inline-block; transition: background 0.2s; }
+        .btn-download:hover { background: #D7D9DA; }
+        .btn-star { background: transparent; color: var(--text-primary); text-decoration: none; padding: 14px 36px; border-radius: 9999px; font-weight: 700; font-size: 16px; display: inline-block; border: 1px solid var(--border-thin); margin-left: 15px; transition: all 0.2s; }
+        .btn-star:hover { border-color: var(--text-primary); background: #121214; }
+
+        .features-grid { max-width: 1200px; margin: 60px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .f-card { border: 1px solid var(--border-thin); padding: 30px; border-radius: 12px; background: var(--bg-card); }
+        .f-card h3 { font-size: 20px; margin-bottom: 12px; }
+        .f-card p { font-size: 14px; color: var(--text-muted); }
+
+        footer { text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-thin); margin-top: 100px; }
     </style>
 </head>
 <body>
 
-    <div class="sidebar">
-        <div>
-            <div class="brand-title">Axiom</div>
-            <div class="brand-sub">Devnet Array v1.2.0</div>
-            
-            <div class="nav-links">
-                <button class="nav-btn active" onclick="switchTab('tg', 'https://telegram.org')">Sovereign Messenger</button>
-                <button class="nav-btn" onclick="switchTab('discord', 'https://discord.com')">Isolated Comm-Grid</button>
-                <button class="nav-btn" onclick="switchTab('gpt', 'https://chatgpt.com')">Private AI Node</button>
-                <button class="nav-btn" onclick="switchTab('ddg', 'https://duckduckgo.com')">Sovereign Browser</button>
-                <button class="nav-btn" onclick="switchTab('insta', 'https://instagram.com')">Sandboxed WebGrid</button>
-            </div>
-        </div>
+    <nav class="nav-container">
+        <div class="logo-text">Axiom</div>
+        <div style="color: var(--text-muted); font-size: 14px; font-weight: 600;">Status: Devnet Array v1.2.0</div>
+    </nav>
 
-        <div style="font-size: 11px; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; padding-left: 12px;">
-            [SECURITY: ISO-LOCKED]
+    <section class="hero">
+        <h1>Your Apps. Your Network.<br><span style="color: var(--gray-light);">No Interceptors.</span></h1>
+        <p>Enforce hyper-isolated client sandboxing. Blind kernel telemetry sweeps and eliminate local client-side scanning loops automatically.</p>
+        
+        <span id="download-zone">
+            <a href="https://github.com" class="btn-download">Download Axiom Shield Setup (v1.2.0)</a>
+        </span>
+        <a href="https://github.com" target="_blank" class="btn-star">⭐ Star us on GitHub</a>
+    </section>
+
+    <div class="features-grid">
+        <div class="f-card">
+            <h3>Sovereign Messenger</h3>
+            <p>Direct cryptographic handshake arrays over GramJS MTProto layer bypass traditional browser logging.</p>
+        </div>
+        <div class="f-card">
+            <h3>Isolated Comm-Grid</h3>
+            <p>Deploys persistent memory perimeters locally, isolating sandboxed apps from host device diagnostic sweeps.</p>
+        </div>
+        <div class="f-card">
+            <h3>Private AI Node</h3>
+            <p>Runs encrypted intelligence loops locally, masking analytical metadata vectors entirely.</p>
+        </div>
+        <div class="f-card">
+            <h3>Sovereign Browser Core</h3>
+            <p>Chains raw DuckDuckGo pipeline routing overlays, neutralizing active client-side canvas fingerprinting.</p>
+        </div>
+        <div class="f-card">
+            <h3>Sandboxed Web-Grid</h3>
+            <p>Capsulate local data loops inside decoupled partitions to prevent cross-site host indexing arrays.</p>
         </div>
     </div>
 
-    <div class="view-container">
-        <webview id="wv-tg" class="active" src="https://telegram.org" partition="persist:tg"></webview>
-        <webview id="wv-discord" src="https://discord.com" partition="persist:discord"></webview>
-        <webview id="wv-gpt" src="https://chatgpt.com" partition="persist:gpt"></webview>
-        <webview id="wv-ddg" src="https://duckduckgo.com" partition="persist:ddg"></webview>
-        <webview id="wv-insta" src="https://instagram.com" partition="persist:insta"></webview>
-    </div>
+    <footer>
+        <p>Axiom Core Framework &copy; 2026. Built for Digital Sovereignty. Fully Non-Commercial.</p>
+    </footer>
 
-    <script>
-        function switchTab(tabId, url) {
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('webview').forEach(wv => wv.classList.remove('active'));
-            
-            event.currentTarget.classList.add('active');
-            const targetWv = document.getElementById('wv-' + tabId);
-            targetWv.classList.add('active');
-            if(!targetWv.src) { targetWv.src = url; }
-        }
-    </script>
 </body>
 </html>
