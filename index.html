@@ -14,6 +14,7 @@
             --text-primary: #E7E9EA;
             --text-muted: #71717A;
             --gray-light: #A1A1AA;
+            --matrix-green: #00FF66;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: var(--bg-black); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
@@ -22,7 +23,7 @@
         .hero { max-width: 900px; margin: 80px auto; text-align: center; padding: 0 20px; }
         .hero h1 { font-size: 48px; font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1; }
         .hero p { font-size: 18px; color: var(--text-muted); margin-bottom: 40px; }
-        .btn-download { background: var(--text-primary); color: #000; text-decoration: none; padding: 14px 36px; border-radius: 9999px; font-weight: 700; font-size: 16px; display: inline-block; transition: background 0.2s; cursor: pointer; border: none; }
+        .btn-download { background: var(--text-primary); color: #000; text-decoration: none; padding: 14px 36px; border-radius: 9999px; font-weight: 700; font-size: 16px; display: inline-block; transition: background 0.2s; border: none; cursor: pointer; }
         .btn-download:hover { background: #D7D9DA; }
         .btn-star { background: transparent; color: var(--text-primary); text-decoration: none; padding: 14px 36px; border-radius: 9999px; font-weight: 700; font-size: 16px; display: inline-block; border: 1px solid var(--border-thin); margin-left: 15px; transition: all 0.2s; }
         .btn-star:hover { border-color: var(--text-primary); background: #121214; }
@@ -30,6 +31,12 @@
         .f-card { border: 1px solid var(--border-thin); padding: 30px; border-radius: 12px; background: var(--bg-card); }
         .f-card h3 { font-size: 20px; margin-bottom: 12px; }
         .f-card p { font-size: 14px; color: var(--text-muted); }
+        .faq-section { max-width: 800px; margin: 100px auto; padding: 0 20px; text-align: left; }
+        .faq-section h2 { font-size: 32px; text-align: center; margin-bottom: 40px; letter-spacing: -1px; }
+        .faq-item { border-bottom: 1px solid var(--border-thin); padding: 20px 0; }
+        .faq-trigger { background: none; border: none; width: 100%; text-align: left; color: var(--text-primary); font-size: 18px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-muted); font-size: 15px; margin-top: 10px; }
+        .faq-item.active .faq-content { max-height: 200px; }
         footer { text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border-thin); margin-top: 100px; }
     </style>
 </head>
@@ -48,11 +55,13 @@
             <a href="https://github.com/gabrielgigitashvili044-pixel/axiom/releases/download/v1.2.0/axiom-shield.Setup.1.2.0.exe" class="btn-download">Download Axiom Shield Setup (v1.2.0)</a>
         </span>
         <a href="https://github.com/gabrielgigitashvili044-pixel/axiom" target="_blank" class="btn-star">⭐ Star us on GitHub</a>
-    </section>
-            <div style="margin-top: 25px; font-size: 13px; color: var(--text-muted); font-family: sans-serif;">
+        
+        <div style="margin-top: 25px; font-size: 13px; color: var(--text-muted);">
             <p style="margin-bottom: 5px;">📱 <b>Mobile Installation:</b> Open this link in <b>Safari (iOS)</b> or <b>Chrome (Android)</b>.</p>
-            <p>For iOS, tap <b>Share</b> → <b>'Add to Home Screen'</b>. For Android, simply tap the automated install prompt.</p>
+            <p>For iOS, tap <b>Share</b> → <b>'Add to Home Screen'</b>. For Android, tap the automated prompt.</p>
         </div>
+    </section>
+
     <div class="features-grid">
         <div class="f-card">
             <h3>Sovereign Messenger</h3>
@@ -76,29 +85,49 @@
         </div>
     </div>
 
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <button class="faq-trigger"><span>What is Axiom Shield?</span><span>+</span></button>
+            <div class="faq-content">
+                <p>Axiom is a sovereign desktop workspace engine built to insulate secure communication pipelines from host-level device metrics and analytical diagnostic overlays.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-trigger"><span>Does Axiom modify external networks?</span><span>+</span></button>
+            <div class="faq-content">
+                <p>No. Axiom runs strictly at the client level on your hardware. It creates independent persistence sandboxes around target endpoints, isolating native storage layers.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-trigger"><span>How does the $AXM Ledger function?</span><span>+</span></button>
+            <div class="faq-content">
+                <p>Axiom relies on zero centralized hosting. Nodes are run by anonymous operators globally who route encrypted traffic packages and clear active assets into their balance.</p>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <p>Axiom Core Framework &copy; 2026. Built for Digital Sovereignty. Fully Non-Commercial.</p>
     </footer>
 
-    <script>      
-
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            if (isMobile) {
-                const dlZone = document.getElementById("download-zone");
-                dlZone.innerHTML = `<button class="btn-download" id="pwa-install-btn">📱 Install Mobile Axiom App</button>`;
+    <script>
+        document.querySelectorAll('.faq-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const parent = trigger.parentElement;
+                const isActive = parent.classList.contains('active');
                 
-                document.getElementById('pwa-install-btn').addEventListener('click', () => {
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then((choice) => {
-                        if (choice.outcome === 'accepted') { console.log('User installed Axiom PWA'); }
-                        deferredPrompt = null;
-                    });
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-content').style.maxHeight = '0px';
                 });
-            }
+
+                if (!isActive) {
+                    parent.classList.add('active');
+                    const content = parent.querySelector('.faq-content');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
         });
     </script>
 </body>
