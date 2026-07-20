@@ -82,8 +82,11 @@
 
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
+    navigator.serviceWorker.register('sw.js?v=1.2.5').then(reg => {
+        reg.update();
+    });
+     
+        
 
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
