@@ -10,7 +10,7 @@
   "scope": "https://gabrielgigitashvili044-pixel.github.io/axiom/",
   "icons": [
     {
-      "src": "https://gabrielgigitashvili044-pixel.github.io/axiom/assets/icon.png",
+      "src": "icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
