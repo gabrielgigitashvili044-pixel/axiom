@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axiom Secure Workspace Array</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon.png">
     <style>
         :root {
             --bg-black: #000000;
@@ -57,19 +59,26 @@
             flex-grow: 1;
             height: 100vh;
             background: var(--bg-black);
-            display: block;
             position: relative;
         }
-        webview {
+        iframe {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100% !important;
-            height: 100% !important;
-            visibility: hidden;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
             background: #000;
         }
-        webview.active { visibility: visible !important; }
+        iframe.active { display: block; }
+
+        /* Mobile optimization: auto-collapse sidebar if screen is too narrow */
+        @media (max-width: 600px) {
+            .sidebar { width: 80px; padding: 10px; }
+            .brand-title, .brand-sub, .nav-btn span { display: none; }
+            .nav-btn { text-align: center; padding: 10px 0; font-size: 14px; }
+        }
     </style>
 </head>
 <body>
@@ -80,31 +89,31 @@
             <div class="brand-sub">Devnet Array v1.2.0</div>
             
             <div class="nav-links">
-                <button class="nav-btn active" onclick="switchTab('tg', 'https://telegram.org')">Sovereign Messenger</button>
-                <button class="nav-btn" onclick="switchTab('discord', 'https://discord.com')">Isolated Comm-Grid</button>
-                <button class="nav-btn" onclick="switchTab('gpt', 'https://chatgpt.com')">Private AI Node</button>
-                <button class="nav-btn" onclick="switchTab('ddg', 'https://duckduckgo.com')">Sovereign Browser</button>
-                <button class="nav-btn" onclick="switchTab('insta', 'https://instagram.com')">Sandboxed WebGrid</button>
+                <button class="nav-btn active" onclick="switchTab('tg', 'https://telegram.org')"><span>Sovereign Messenger</span></button>
+                <button class="nav-btn" onclick="switchTab('discord', 'https://discord.com')"><span>Isolated Comm-Grid</span></button>
+                <button class="nav-btn" onclick="switchTab('gpt', 'https://chatgpt.com')"><span>Private AI Node</span></button>
+                <button class="nav-btn" onclick="switchTab('ddg', 'https://duckduckgo.com')"><span>Sovereign Browser</span></button>
+                <button class="nav-btn" onclick="switchTab('insta', 'https://instagram.com')"><span>Sandboxed WebGrid</span></button>
             </div>
         </div>
 
         <div style="font-size: 11px; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; padding-left: 12px;">
-            [SECURITY: ISO-LOCKED]
+            [SECURITY]
         </div>
     </div>
 
     <div class="view-container">
-        <webview id="wv-tg" class="active" src="https://telegram.org" partition="persist:tg"></webview>
-        <webview id="wv-discord" src="https://discord.com" partition="persist:discord"></webview>
-        <webview id="wv-gpt" src="https://chatgpt.com" partition="persist:gpt"></webview>
-        <webview id="wv-ddg" src="https://duckduckgo.com" partition="persist:ddg"></webview>
-        <webview id="wv-insta" src="https://instagram.com" partition="persist:insta"></webview>
+        <iframe id="wv-tg" class="active" src="https://telegram.org"></iframe>
+        <iframe id="wv-discord" src="https://discord.com"></iframe>
+        <iframe id="wv-gpt" src="https://chatgpt.com"></iframe>
+        <iframe id="wv-ddg" src="https://duckduckgo.com"></iframe>
+        <iframe id="wv-insta" src="https://instagram.com"></iframe>
     </div>
 
     <script>
         function switchTab(tabId, url) {
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('webview').forEach(wv => wv.classList.remove('active'));
+            document.querySelectorAll('iframe').forEach(wv => wv.classList.remove('active'));
             
             event.currentTarget.classList.add('active');
             const targetWv = document.getElementById('wv-' + tabId);
