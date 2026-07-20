@@ -54,10 +54,17 @@
         }
         .nav-link-item:hover { background: var(--gray-hover); border-color: var(--text-primary); }
         .secure-footer { font-size: 11px; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; text-align: center; text-transform: uppercase; }
+                /* X.com Style Splash Screen */
+        #splash {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: #000000; display: flex; justify-content: center;
+            align-items: center; z-index: 99999; transition: opacity 0.5s ease;
+        }
+        #splash img { width: 80px; height: 80px; }
     </style>
 </head>
 <body>
-
+    <div id="splash"><img src="icon.png" alt="Axiom"></div>
     <div class="sidebar">
         <div>
             <div class="brand-title">Axiom Shield</div>
@@ -76,6 +83,11 @@
             [SECURITY: ISO-LOCKED ARRAY]
         </div>
     </div>
-
+    <script>
+        setTimeout(() => {
+            const s = document.getElementById('splash');
+            s.style.opacity = '0'; setTimeout(() => s.remove(), 500);
+        }, 1500);
+    </script>
 </body>
 </html>
