@@ -21,105 +21,61 @@
             height: 100vh;
             width: 100vw;
             display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
         }
         .sidebar {
-            width: 275px;
+            width: 100%;
+            max-width: 400px;
             background: var(--bg-black);
-            border-right: 1px solid var(--border-thin);
             display: flex;
             flex-direction: column;
-            padding: 24px;
-            justify-content: space-between;
+            padding: 30px 24px;
             height: 100vh;
-            flex-shrink: 0;
+            justify-content: space-between;
         }
-        .brand-title { font-size: 26px; font-weight: 900; letter-spacing: -1px; color: #FFFFFF; padding-left: 12px; }
-        .brand-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; font-weight: 600; padding-left: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
-        .nav-links { display: flex; flex-direction: column; gap: 8px; margin-top: 30px; flex-grow: 1; }
-        .nav-btn {
+        .brand-title { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: #FFFFFF; text-align: center; }
+        .brand-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 600; text-align: center; letter-spacing: 0.5px; text-transform: uppercase; }
+        .nav-links { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; flex-grow: 1; }
+        .nav-link-item {
             background: transparent;
-            border: none;
+            border: 1px solid var(--border-thin);
             color: var(--text-primary);
-            padding: 12px 16px;
-            border-radius: 9999px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 19px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
             font-weight: 700;
             display: block;
             width: 100%;
-            transition: background 0.2s;
+            transition: all 0.2s;
             letter-spacing: -0.3px;
         }
-        .nav-btn:hover { background: var(--gray-hover); }
-        .nav-btn.active { background: var(--gray-hover); color: #FFFFFF; }
-        
-        .view-container {
-            flex-grow: 1;
-            height: 100vh;
-            background: var(--bg-black);
-            position: relative;
-        }
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: none;
-            background: #000;
-        }
-        iframe.active { display: block; }
-
-        /* Mobile optimization: auto-collapse sidebar if screen is too narrow */
-        @media (max-width: 600px) {
-            .sidebar { width: 80px; padding: 10px; }
-            .brand-title, .brand-sub, .nav-btn span { display: none; }
-            .nav-btn { text-align: center; padding: 10px 0; font-size: 14px; }
-        }
+        .nav-link-item:hover { background: var(--gray-hover); border-color: var(--text-primary); }
+        .secure-footer { font-size: 11px; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; text-align: center; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
         <div>
-            <div class="brand-title">Axiom</div>
-            <div class="brand-sub">Devnet Array v1.2.0</div>
+            <div class="brand-title">Axiom Shield</div>
+            <div class="brand-sub">Sovereign Mobile Workspace</div>
             
             <div class="nav-links">
-                <button class="nav-btn active" onclick="switchTab('tg', 'https://telegram.org')"><span>Sovereign Messenger</span></button>
-                <button class="nav-btn" onclick="switchTab('discord', 'https://discord.com')"><span>Isolated Comm-Grid</span></button>
-                <button class="nav-btn" onclick="switchTab('gpt', 'https://chatgpt.com')"><span>Private AI Node</span></button>
-                <button class="nav-btn" onclick="switchTab('ddg', 'https://duckduckgo.com')"><span>Sovereign Browser</span></button>
-                <button class="nav-btn" onclick="switchTab('insta', 'https://instagram.com')"><span>Sandboxed WebGrid</span></button>
+                <a href="https://telegram.org" target="_blank" class="nav-link-item">> Sovereign Messenger</a>
+                <a href="https://discord.com" target="_blank" class="nav-link-item">> Isolated Comm-Grid</a>
+                <a href="https://chatgpt.com" target="_blank" class="nav-link-item">> Private AI Node</a>
+                <a href="https://duckduckgo.com" target="_blank" class="nav-link-item">> Sovereign Browser</a>
+                <a href="https://instagram.com" target="_blank" class="nav-link-item">> Sandboxed WebGrid</a>
             </div>
         </div>
 
-        <div style="font-size: 11px; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; padding-left: 12px;">
-            [SECURITY]
+        <div class="secure-footer">
+            [SECURITY: ISO-LOCKED ARRAY]
         </div>
     </div>
 
-    <div class="view-container">
-        <iframe id="wv-tg" class="active" src="https://telegram.org"></iframe>
-        <iframe id="wv-discord" src="https://discord.com"></iframe>
-        <iframe id="wv-gpt" src="https://chatgpt.com"></iframe>
-        <iframe id="wv-ddg" src="https://duckduckgo.com"></iframe>
-        <iframe id="wv-insta" src="https://instagram.com"></iframe>
-    </div>
-
-    <script>
-        function switchTab(tabId, url) {
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('iframe').forEach(wv => wv.classList.remove('active'));
-            
-            event.currentTarget.classList.add('active');
-            const targetWv = document.getElementById('wv-' + tabId);
-            targetWv.classList.add('active');
-            if(!targetWv.src) { targetWv.src = url; }
-        }
-    </script>
 </body>
 </html>
