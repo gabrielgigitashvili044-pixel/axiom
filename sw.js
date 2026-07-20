@@ -1,4 +1,4 @@
-const CACHE_NAME = 'axiom-v1.2.0';
+const CACHE_NAME = 'axiom-v1.2.5';
 const assets = ['./', 'index.html', 'manifest.json'];
 
 self.addEventListener('install', (e) => {
