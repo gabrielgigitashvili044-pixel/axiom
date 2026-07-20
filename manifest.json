@@ -2,15 +2,15 @@
   "name": "Axiom Shield",
   "short_name": "Axiom",
   "description": "Sovereign Anti-Telemetry Client Network",
-  "start_url": "index.html",
+  "start_url": "https://github.io",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "orientation": "portrait",
-  "scope": "./",
+  "scope": "https://gabrielgigitashvili044-pixel.github.io/axiom/",
   "icons": [
     {
-      "src": "https://github.io",
+      "src": "https://github.ioassets/icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
