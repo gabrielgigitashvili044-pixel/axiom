@@ -37,15 +37,15 @@
         }
         .brand-title { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: #FFFFFF; text-align: center; }
         .brand-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 600; text-align: center; letter-spacing: 0.5px; text-transform: uppercase; }
-        .nav-links { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; flex-grow: 1; }
+        .nav-links { display: flex; flex-direction: column; gap: 10px; margin-top: 30px; flex-grow: 1; overflow-y: auto; }
         .nav-link-item {
             background: transparent;
             border: 1px solid var(--border-thin);
             color: var(--text-primary);
-            padding: 16px 20px;
+            padding: 14px 20px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             display: block;
             width: 100%;
@@ -53,8 +53,8 @@
             letter-spacing: -0.3px;
         }
         .nav-link-item:hover { background: var(--gray-hover); border-color: var(--text-primary); }
-        .secure-footer { font-size: 11px; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; text-align: center; text-transform: uppercase; }
-                /* X.com Style Splash Screen */
+        .secure-footer { font-size: 11px; color: var(--text-muted); font-weight: 700; letter-spacing: 1px; text-align: center; text-transform: uppercase; margin-top: 15px; }
+        
         #splash {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: #000000; display: flex; justify-content: center;
@@ -64,17 +64,21 @@
     </style>
 </head>
 <body>
+
     <div id="splash"><img src="icon.png" alt="Axiom"></div>
+
     <div class="sidebar">
         <div>
             <div class="brand-title">Axiom Shield</div>
             <div class="brand-sub">Sovereign Mobile Workspace</div>
             
             <div class="nav-links">
-                <a href="https://web.telegram.org/k/" target="_blank" class="nav-link-item">> Sovereign Messenger</a>
-                <a href="https://discord.com/login?redirect_to=%2Fstore" target="_blank" class="nav-link-item">> Isolated Comm-Grid</a>
+                <a href="https://telegram.org" target="_blank" class="nav-link-item">> Sovereign Messenger</a>
+                <a href="https://whatsapp.com" target="_blank" class="nav-link-item">> Enencrypted WhatsApp Array</a>
+                <a href="https://discord.com" target="_blank" class="nav-link-item">> Isolated Comm-Grid</a>
                 <a href="https://chatgpt.com" target="_blank" class="nav-link-item">> Private AI Node</a>
                 <a href="https://duckduckgo.com" target="_blank" class="nav-link-item">> Sovereign Browser (Uncensored)</a>
+                <a href="https://tiktok.com" target="_blank" class="nav-link-item">> Sandboxed TikTok Grid</a>
                 <a href="https://instagram.com" target="_blank" class="nav-link-item">> Sandboxed WebGrid</a>
             </div>
         </div>
@@ -83,10 +87,11 @@
             [SECURITY: ISO-LOCKED ARRAY]
         </div>
     </div>
+
     <script>
         setTimeout(() => {
             const s = document.getElementById('splash');
-            s.style.opacity = '0'; setTimeout(() => s.remove(), 500);
+            if(s) { s.style.opacity = '0'; setTimeout(() => s.remove(), 500); }
         }, 1500);
     </script>
 </body>
